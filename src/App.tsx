@@ -80,7 +80,8 @@ function App() {
       <main class="max-w-3xl mx-auto flex flex-col items-center">
         <p class="text-lg mb-6">
           Welcome to Hinge Analyser! This tool is designed to help you quickly view and analyze your Hinge data files.
-          Simply click the button below to select a local file, and the raw text contents of the file will be displayed.
+          Simply click the button below to select your hinge json file and analyse your data. All calculations are done
+          on your own browser and no data is sent to any remote servers.
         </p>
 
         <div class="mb-6 items-center">
