@@ -9,16 +9,16 @@ interface SankeyChartProps {
   stats: any;
 }
 
-const colors = {
+const colors: Record<string, string> = {
   interactions: '#b5fef7',
   matches: '#f7bbe1',
   likesGiven: '#ffdda5',
   likesReceived: '#ffdda5',
   meetups: '#fb9191'
-};
+} as const;
 
-const getHover = (key: any) => colors[key];
-const getColor = (key: any) => colors[key];
+const getHover = (key: string) => colors[key];
+const getColor = (key: string) => colors[key];
 
 function SankeyChart(props: SankeyChartProps) {
   let canvasRef: HTMLCanvasElement | undefined;
@@ -38,10 +38,10 @@ function SankeyChart(props: SankeyChartProps) {
             {from: 'likesReceived', to: 'matches', flow: props.stats.matchesFromLikesReceived},
             {from: 'matches', to: 'meetups', flow: props.stats.meetups},
         ],
-        colorFrom: (c) => getColor(c.dataset.data[c.dataIndex].from),
-        colorTo: (c) => getColor(c.dataset.data[c.dataIndex].to),
-        hoverColorFrom: (c) => getHover(c.dataset.data[c.dataIndex].from),
-        hoverColorTo: (c) => getHover(c.dataset.data[c.dataIndex].to),
+        colorFrom: (c: any) => getColor(c.dataset.data[c.dataIndex].from),
+        colorTo: (c: any) => getColor(c.dataset.data[c.dataIndex].to),
+        hoverColorFrom: (c: any) => getHover(c.dataset.data[c.dataIndex].from),
+        hoverColorTo: (c: any) => getHover(c.dataset.data[c.dataIndex].to),
         colorMode: 'gradient',
         alpha: 0.5,
         labels: {
@@ -63,7 +63,7 @@ function SankeyChart(props: SankeyChartProps) {
             meetups: 3,
         },
         size: 'max', // or 'min' if flow overlap is preferred
-        }]
+        } as any]
       },
     });
 
